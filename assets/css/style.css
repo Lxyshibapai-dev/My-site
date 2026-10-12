@@ -311,6 +311,23 @@ body {
   user-select: none;
 }
 
+/* 尾巴单独一层：绕尾巴根部小幅摆动。
+   两层用的是同一张图切出来的两半（身体镂空 + 尾巴单独一张），
+   静止时和原来一模一样，动画时只有尾巴在动。 */
+.puppy-mark--tail {
+  transform-origin: 76% 29%;
+  animation: tail-wag 1.15s ease-in-out infinite;
+}
+
+@keyframes tail-wag {
+  0%, 100% { transform: translate(-50%, -50%) rotate(-6.5deg); }
+  50%      { transform: translate(-50%, -50%) rotate(6.5deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .puppy-mark--tail { animation: none; }
+}
+
 /* ============ 通用 section ============ */
 section {
   padding: var(--section-pad) 32px;
