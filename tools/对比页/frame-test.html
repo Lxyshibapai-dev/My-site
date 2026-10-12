@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>画框四款 · 花纹纹样</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=ZCOOL+KuaiLe&family=Space+Grotesk:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #e3cda4;
+    color: #3a000d;
+    font-family: 'Noto Sans SC', 'Microsoft YaHei', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    padding-bottom: 80px;
+  }
+  .brief {
+    background: #3a000d; color: #e3cda4;
+    padding: 18px 24px; text-align: center;
+    font-size: 14px; line-height: 1.8; letter-spacing: .5px;
+  }
+  .brief b { color: #fff; }
+  .brief span { opacity: .6; font-size: 13px; }
+
+  .grid {
+    max-width: 880px; margin: 0 auto;
+    padding: 60px 32px 0;
+    display: grid; grid-template-columns: repeat(2, 1fr);
+    gap: 72px 56px;
+  }
+
+  .demo { text-align: center; }
+  .demo-pic {
+    position: relative;
+    display: inline-block;
+    padding: 15px;
+  }
+  .demo-pic img {
+    display: block; width: 100%;
+    border-radius: 10px;
+  }
+  .fr {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    overflow: visible;
+    pointer-events: none;
+  }
+  figcaption {
+    margin-top: 20px;
+    font-size: 13px; letter-spacing: .5px;
+    color: #701f32; line-height: 1.7;
+  }
+  figcaption b {
+    display: inline-block;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 12px; letter-spacing: 1px;
+    background: #8fa2b5; color: #e3cda4;
+    padding: 3px 9px; border-radius: 5px;
+    margin-right: 8px;
+  }
+  figcaption .name {
+    font-family: 'ZCOOL KuaiLe', sans-serif;
+    font-size: 15px; color: #3a000d;
+    display: block; margin-bottom: 4px;
+  }
+  figcaption .note { color: #8a7570; font-size: 12.5px; }
+</style>
+</head>
+<body>
+
+<div class="brief">
+  <b>四款花纹画框 · 同一张照片 · 挑一个</b><br>
+  <span>看着哪个顺眼就说它的字母，我换到网站上去。</span>
+</div>
+
+<div class="grid">
+
+  <!-- A 断角手绘（现在用的） -->
+  <figure class="demo">
+    <div class="demo-pic">
+      <img src="assets/img/hero-photo.jpg" alt="">
+      <svg class="fr" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+        <g stroke="#8fa2b5" fill="none" stroke-linecap="round">
+          <line x1="5" y1="0" x2="47" y2="0" stroke-width="7" vector-effect="non-scaling-stroke"/>
+          <line x1="53" y1="0" x2="95" y2="0" stroke-width="3" vector-effect="non-scaling-stroke"/>
+          <line x1="5" y1="100" x2="47" y2="100" stroke-width="3" vector-effect="non-scaling-stroke"/>
+          <line x1="53" y1="100" x2="95" y2="100" stroke-width="7" vector-effect="non-scaling-stroke"/>
+          <line x1="0" y1="5" x2="0" y2="47" stroke-width="7" vector-effect="non-scaling-stroke"/>
+          <line x1="0" y1="53" x2="0" y2="95" stroke-width="3" vector-effect="non-scaling-stroke"/>
+          <line x1="100" y1="5" x2="100" y2="47" stroke-width="3" vector-effect="non-scaling-stroke"/>
+          <line x1="100" y1="53" x2="100" y2="95" stroke-width="7" vector-effect="non-scaling-stroke"/>
+        </g>
+      </svg>
+    </div>
+    <figcaption>
+      <span class="name">A · 断角手绘</span>
+      <span class="note">现在网站上用的这个，作对照</span>
+    </figcaption>
+  </figure>
+
+  <!-- B 珠串 -->
+  <figure class="demo">
+    <div class="demo-pic">
+      <img src="assets/img/hero-photo.jpg" alt="">
+      <svg class="fr" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+        <rect x="2.5" y="2.5" width="95" height="95" fill="none" stroke="#8fa2b5"
+              stroke-width="9" stroke-linecap="round" stroke-dasharray="0.5 14"
+              vector-effect="non-scaling-stroke"/>
+      </svg>
+    </div>
+    <figcaption>
+      <span class="name">B · 珠串纹</span>
+      <span class="note">一排小圆点，像串起来的珠子</span>
+    </figcaption>
+  </figure>
+
+  <!-- C 缝线 -->
+  <figure class="demo">
+    <div class="demo-pic">
+      <img src="assets/img/hero-photo.jpg" alt="">
+      <svg class="fr" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+        <rect x="2.5" y="2.5" width="95" height="95" fill="none" stroke="#8fa2b5"
+              stroke-width="5" stroke-dasharray="17 11" vector-effect="non-scaling-stroke"/>
+      </svg>
+    </div>
+    <figcaption>
+      <span class="name">C · 缝线纹</span>
+      <span class="note">一长一短的针脚，像缝上去的</span>
+    </figcaption>
+  </figure>
+
+  <!-- D 齿纹 -->
+  <figure class="demo">
+    <div class="demo-pic">
+      <img src="assets/img/hero-photo.jpg" alt="">
+      <svg class="fr" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+        <defs>
+          <pattern id="zig" width="11" height="11" patternUnits="userSpaceOnUse">
+            <path d="M0,11 L5.5,0 L11,11 Z" fill="#8fa2b5"/>
+          </pattern>
+        </defs>
+        <path d="M0,0 H100 V100 H0 Z M10,10 H90 V90 H10 Z" fill="url(#zig)" fill-rule="evenodd"/>
+      </svg>
+    </div>
+    <figcaption>
+      <span class="name">D · 锯齿花边</span>
+      <span class="note">连续小三角，像邮票或饼干边</span>
+    </figcaption>
+  </figure>
+
+</div>
+
+</body>
+</html>

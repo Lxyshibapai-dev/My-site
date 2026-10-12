@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>风格三个方向 · 挑一个</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@200;300;400;600&family=Noto+Sans+SC:wght@300;400;500;700;900&family=Space+Grotesk:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Sans SC', 'Microsoft YaHei', sans-serif;
+    background: #dedad3;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .brief {
+    position: sticky; top: 0; z-index: 99;
+    background: #111; color: #fff;
+    padding: 16px 24px; text-align: center;
+    font-size: 14px; letter-spacing: 1px; line-height: 1.7;
+  }
+  .brief b { color: #e0cf9f; font-weight: 500; }
+  .brief span { opacity: .6; }
+
+  .variant {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: center;
+    position: relative;
+    padding: 90px 8vw 60px;
+  }
+
+  .meta {
+    position: absolute; top: 28px; left: 8vw;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase;
+    opacity: .45;
+  }
+
+  /* ═══════════ 方向 A · 纸感衬线（你现在的版本） ═══════════ */
+  .variant-a { background: #faf8f5; color: #2b2b28; }
+  .variant-a .inner { max-width: 1080px; margin: 0 auto; width: 100%; }
+  .variant-a .kicker {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 13px; letter-spacing: 3px; text-transform: uppercase;
+    color: #a38a5f; margin-bottom: 20px;
+  }
+  .variant-a h1 {
+    font-family: 'LXGW WenKai', 'Noto Serif SC', serif;
+    font-weight: 400;
+    font-size: clamp(40px, 6vw, 72px);
+    line-height: 1.25; margin-bottom: 28px;
+  }
+  .variant-a .hl { color: #a38a5f; }
+  .variant-a .desc {
+    font-size: clamp(16px, 2vw, 20px); color: #6e6b64;
+    line-height: 2; margin-bottom: 32px;
+  }
+  .variant-a .tagline {
+    font-family: 'LXGW WenKai', serif;
+    font-size: 15px; color: #a38a5f; letter-spacing: 1px;
+    border-left: 2px solid #d9c9a3; padding-left: 16px;
+  }
+
+  /* ═══════════ 方向 B · 瑞士网格（冷、硬、理性） ═══════════ */
+  .variant-b { background: #ffffff; color: #0a0a0a; }
+  .variant-b .inner { max-width: 1200px; margin: 0 auto; width: 100%; }
+  .variant-b .topline { height: 2px; background: #0a0a0a; margin-bottom: 44px; }
+  .variant-b .row { display: flex; gap: 48px; }
+  .variant-b .idx {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 13px; letter-spacing: 1px; padding-top: 14px; flex-shrink: 0;
+  }
+  .variant-b .kicker {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 11px; letter-spacing: 4px; text-transform: uppercase;
+    margin-bottom: 28px; color: #555;
+  }
+  .variant-b h1 {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-weight: 700;
+    font-size: clamp(52px, 8.5vw, 112px);
+    line-height: 0.98; letter-spacing: -0.03em;
+    margin-bottom: 52px;
+  }
+  .variant-b .cols {
+    display: grid; grid-template-columns: 1.4fr 1fr; gap: 48px;
+    border-top: 1px solid #0a0a0a; padding-top: 26px; max-width: 980px;
+  }
+  .variant-b .cols p { font-size: 15px; line-height: 1.95; color: #2a2a2a; }
+  .variant-b .tagline {
+    font-family: 'Space Grotesk', sans-serif;
+    letter-spacing: 1.5px; color: #0a0a0a !important;
+  }
+
+  /* ═══════════ 方向 C · 编辑实验（有张力、有个性） ═══════════ */
+  .variant-c { background: #f0eae0; color: #141210; }
+  .variant-c .inner { max-width: 1080px; margin: 0 auto; width: 100%; }
+  .variant-c .kicker {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 11px; letter-spacing: 3.5px; text-transform: uppercase;
+    margin-bottom: 44px; opacity: .65;
+  }
+  .variant-c h1 { margin-bottom: 56px; }
+  .variant-c .l1 {
+    display: block;
+    font-family: 'Noto Serif SC', serif;
+    font-weight: 200;
+    font-size: clamp(26px, 3.6vw, 44px);
+    color: #7a7168;
+    margin-left: 0.15em;
+    letter-spacing: 0.05em;
+    margin-bottom: 4px;
+  }
+  .variant-c .l2 {
+    display: block;
+    font-family: 'Noto Sans SC', sans-serif;
+    font-weight: 900;
+    font-size: clamp(46px, 7.8vw, 100px);
+    line-height: 0.95; letter-spacing: -0.03em;
+    margin-left: 1.15em;
+  }
+  .variant-c .rule { height: 1px; background: #141210; opacity: .22; margin-bottom: 26px; }
+  .variant-c .foot {
+    display: flex; justify-content: space-between;
+    gap: 40px; align-items: flex-start; flex-wrap: wrap;
+  }
+  .variant-c .desc { font-size: 15px; line-height: 2.05; color: #4a4440; max-width: 340px; }
+  .variant-c .tagline {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 14px; letter-spacing: 2.5px; color: #141210;
+  }
+
+  @media (max-width: 768px) {
+    .variant { padding: 80px 24px 50px; }
+    .meta { left: 24px; top: 20px; }
+    .variant-b .row { flex-direction: column; gap: 20px; }
+    .variant-b .cols { grid-template-columns: 1fr; gap: 20px; }
+    .variant-c .l2 { margin-left: 0.4em; }
+  }
+</style>
+</head>
+<body>
+
+<div class="brief">
+  <b>三个方向 · 同一个内容 · 不同的味道</b><br>
+  <span>随便往下滚，凭第一眼感觉：哪个对，哪个不对。不用分析，说"这个"就行。</span>
+</div>
+
+<!-- ══════════ A ══════════ -->
+<section class="variant variant-a">
+  <div class="meta">方向 A · 纸感衬线 · 你现在的版本</div>
+  <div class="inner">
+    <div class="kicker">01 / HELLO</div>
+    <h1>你好，我是<span class="hl">娄馨月</span></h1>
+    <p class="desc">一个会用 AI 的内容创作者。<br>写作、设计、剪辑，把想法变成看得见的东西。</p>
+    <p class="tagline">「把宁夏的风，带到杭州的江」</p>
+  </div>
+</section>
+
+<!-- ══════════ B ══════════ -->
+<section class="variant variant-b">
+  <div class="meta">方向 B · 瑞士网格 · 冷、理性、专业</div>
+  <div class="inner">
+    <div class="topline"></div>
+    <div class="row">
+      <div class="idx">01</div>
+      <div style="flex:1;">
+        <div class="kicker">Portfolio — 2026</div>
+        <h1>你好，<br>我是娄馨月</h1>
+        <div class="cols">
+          <p>一个会用 AI 的内容创作者。写作、设计、剪辑，把想法变成看得见的东西。</p>
+          <p class="tagline">把宁夏的风<br>带到杭州的江</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ C ══════════ -->
+<section class="variant variant-c">
+  <div class="meta">方向 C · 编辑实验 · 有张力、有个性</div>
+  <div class="inner">
+    <div class="kicker">Hello — 01</div>
+    <h1>
+      <span class="l1">你好，</span>
+      <span class="l2">我是娄馨月</span>
+    </h1>
+    <div class="rule"></div>
+    <div class="foot">
+      <p class="desc">一个会用 AI 的内容创作者。写作、设计、剪辑，把想法变成看得见的东西。</p>
+      <p class="tagline">把宁夏的风，带到杭州的江</p>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

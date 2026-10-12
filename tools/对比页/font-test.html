@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>字体六个候选 · 挑一个（可混搭）</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cn-fontsource-smiley-sans-oblique-regular/font.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css">
+<link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&family=ZCOOL+QingKe+HuangYou&family=Ma+Shan+Zheng&family=Zhi+Mang+Xing&family=Noto+Sans+SC:wght@300;400&family=Space+Grotesk:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #faf8f5;
+    color: #2b2b28;
+    font-family: 'Noto Sans SC', 'Microsoft YaHei', sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .brief {
+    position: sticky; top: 0; z-index: 9;
+    background: #111; color: #fff;
+    padding: 16px 24px; text-align: center;
+    font-size: 14px; letter-spacing: 1px; line-height: 1.75;
+  }
+  .brief b { color: #e0cf9f; font-weight: 500; }
+  .brief span { opacity: .55; font-size: 13px; }
+
+  .font-block {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 60px 40px;
+    border-bottom: 1px solid #e5e0d8;
+  }
+
+  .font-meta {
+    display: flex; align-items: baseline; gap: 14px;
+    margin-bottom: 26px; flex-wrap: wrap;
+  }
+  .font-idx {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 13px; letter-spacing: 2px; color: #a38a5f;
+  }
+  .font-name { font-size: 14px; letter-spacing: 0.5px; }
+  .font-note { font-size: 13px; color: #948f86; }
+
+  .sample-title {
+    font-size: clamp(38px, 5.5vw, 62px);
+    line-height: 1.22;
+    margin-bottom: 18px;
+  }
+  .sample-sub {
+    font-size: 16.5px;
+    color: #6e6b64;
+    line-height: 1.95;
+    letter-spacing: 0.3px;
+  }
+
+  /* ① 得意黑 —— 窄斜、有速度感 */
+  .f1 .sample-title { font-family: 'Smiley Sans Oblique', sans-serif; letter-spacing: 0.02em; }
+
+  /* ② 站酷快乐体 —— 圆头圆脑、欢乐 */
+  .f2 .sample-title { font-family: 'ZCOOL KuaiLe', sans-serif; }
+
+  /* ③ 站酷庆科黄油体 —— 圆胖厚重、有点怪趣味 */
+  .f3 .sample-title { font-family: 'ZCOOL QingKe HuangYou', sans-serif; }
+
+  /* ④ 霞鹜文楷 —— 你现在的版本（对照） */
+  .f4 .sample-title { font-family: 'LXGW WenKai', 'Noto Serif SC', serif; }
+
+  /* ⑤ 马善政毛笔楷书 —— 手写毛笔、野生感 */
+  .f5 .sample-title { font-family: 'Ma Shan Zheng', cursive; }
+
+  /* ⑥ 志莽行书 —— 连笔、潦草随性 */
+  .f6 .sample-title { font-family: 'Zhi Mang Xing', cursive; }
+
+  .footer-note {
+    max-width: 1080px; margin: 0 auto;
+    padding: 48px 40px 80px;
+    font-size: 14px; color: #948f86; line-height: 2;
+  }
+</style>
+</head>
+<body>
+
+<div class="brief">
+  <b>六个字体 · 同一句话 · 挑你喜欢的"古灵精怪"</b><br>
+  <span>可以直接说"标题用①、正文用④"混搭。哪一行的字看着和其他行一模一样，说明没加载出来，告诉我。</span>
+</div>
+
+<!-- ① -->
+<div class="font-block f1">
+  <div class="font-meta">
+    <span class="font-idx">①</span>
+    <span class="font-name">得意黑 Smiley Sans</span>
+    <span class="font-note">窄斜体 · 有速度感、潮、不正经</span>
+  </div>
+  <div class="sample-title">你好，我是娄馨月</div>
+  <div class="sample-sub">一个会用 AI 的内容创作者 · 写作、设计、剪辑</div>
+</div>
+
+<!-- ② -->
+<div class="font-block f2">
+  <div class="font-meta">
+    <span class="font-idx">②</span>
+    <span class="font-name">站酷快乐体 ZCOOL KuaiLe</span>
+    <span class="font-note">圆头圆脑 · 欢乐、俏皮、不端着</span>
+  </div>
+  <div class="sample-title">你好，我是娄馨月</div>
+  <div class="sample-sub">一个会用 AI 的内容创作者 · 写作、设计、剪辑</div>
+</div>
+
+<!-- ③ -->
+<div class="font-block f3">
+  <div class="font-meta">
+    <span class="font-idx">③</span>
+    <span class="font-name">站酷庆科黄油体 ZCOOL QingKe HuangYou</span>
+    <span class="font-note">圆胖厚重 · 有点怪趣味、有存在感</span>
+  </div>
+  <div class="sample-title">你好，我是娄馨月</div>
+  <div class="sample-sub">一个会用 AI 的内容创作者 · 写作、设计、剪辑</div>
+</div>
+
+<!-- ④ -->
+<div class="font-block f4">
+  <div class="font-meta">
+    <span class="font-idx">④</span>
+    <span class="font-name">霞鹜文楷 LXGW WenKai</span>
+    <span class="font-note">你现在的版本 · 温和、手写感（作对照）</span>
+  </div>
+  <div class="sample-title">你好，我是娄馨月</div>
+  <div class="sample-sub">一个会用 AI 的内容创作者 · 写作、设计、剪辑</div>
+</div>
+
+<!-- ⑤ -->
+<div class="font-block f5">
+  <div class="font-meta">
+    <span class="font-idx">⑤</span>
+    <span class="font-name">马善政毛笔楷书 Ma Shan Zheng</span>
+    <span class="font-note">毛笔手写 · 有点野、有笔锋</span>
+  </div>
+  <div class="sample-title">你好，我是娄馨月</div>
+  <div class="sample-sub">一个会用 AI 的内容创作者 · 写作、设计、剪辑</div>
+</div>
+
+<!-- ⑥ -->
+<div class="font-block f6">
+  <div class="font-meta">
+    <span class="font-idx">⑥</span>
+    <span class="font-name">志莽行书 Zhi Mang Xing</span>
+    <span class="font-note">连笔行书 · 潦草、随性、更"怪"</span>
+  </div>
+  <div class="sample-title">你好，我是娄馨月</div>
+  <div class="sample-sub">一个会用 AI 的内容创作者 · 写作、设计、剪辑</div>
+</div>
+
+<div class="footer-note">
+  六个都是免费可商用的正版字体，可以放心用在简历和网站上。<br>
+  也可以只说"大概像②那种圆圆的，但再怪一点"——我再去给你找。
+</div>
+
+</body>
+</html>

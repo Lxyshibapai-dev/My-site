@@ -1,0 +1,801 @@
+/* ═══════════════════════════════════════════════════════════════
+   娄馨月 Portfolio — 极简留白风
+
+   ★ 控制面板使用说明 ★
+   你只需要改下面 :root { } 里的值：
+   1. 用 VS Code（或记事本）打开本文件
+   2. 改颜色 → 换 # 开头的色号；改大小 → 换数字
+   3. 保存 (Ctrl+S)，回到浏览器按 F5 刷新
+   每行注释都告诉你：改了会变哪里。
+   改乱了想还原？随时叫我，我有备份逻辑，别怕。
+   ═══════════════════════════════════════════════════════════════ */
+
+:root {
+
+  /* ───────────── ① 颜色：全站的主色调都在这 ───────────── */
+
+  --bg:            #e6e0cb;   /* 米白 —— 页面底色（整站纸感） */
+  --bg-soft:       #dcd5be;   /* 米白深一档（由底色推的）—— 交替区块（影像区）的底色 */
+  --ink:           #26496f;   /* 深蓝（蓝压深两档）—— 主文字色，也是“联系/页脚”深色区的底色 */
+  --ink-soft:      #33587f;   /* 中深蓝 —— 次级文字、段落 */
+  --accent:        #3c6ea6;   /* 亮蓝 —— 强调：名字、小标题、按钮、hover 线 */
+  --accent-soft:   #b5cbe2;   /* 浅蓝 —— 小标签（01 / HELLO、卡片角标）、灰蓝画框、幽灵按钮边框 */
+  --sage:          #97a030;   /* 橄榄绿 —— 点缀：LOGO 小圆点、左竖条 */
+  --kicker-bg:     #c77385;   /* 小标签（01 / HELLO、02 / PROJECTS）的底色 —— 玫红 */
+  --kicker-ink:    #e6e0cb;   /* 小标签上的字 —— 米白（跟页面底色同一个色） */
+  --line:          #bfc391;   /* 淡橄榄 —— 分隔线 & 卡片描边 */
+  --on-dark:       #e6e0cb;   /* 深色区块（联系、页脚）上的文字 —— 米白 */
+  --on-dark-line:  #1b3a5c;   /* 深色区块上的分隔线 */
+
+  /* ───────────── ② 字体：先换风格，就改这三行 ───────────── */
+
+  --font-serif: 'LXGW WenKai', 'Noto Serif SC', 'Songti SC', serif;  /* 大标题字体（手写人文感）—— 想换风格改第一个名字 */
+  --font-sans:  'Noto Sans SC', 'Microsoft YaHei', sans-serif;       /* 正文字体（清晰黑体） */
+  --font-en:    'Space Grotesk', sans-serif;                          /* 英文/数字字体：LOGO、序号、小标签 */
+  --font-title: 'ZCOOL KuaiLe', 'LXGW WenKai', sans-serif;            /* 大标题字体（圆头圆脑·古灵精怪）—— 换风格改这里 */
+
+  /* ───────────── ③ 字号：全站文字大小 ───────────── */
+
+  --fs-hero:      clamp(36px, 4.8vw, 60px); /* 首页大标题：手机至少36px，屏幕越大越大，封顶60px */
+  --fs-section:   clamp(30px, 4vw, 48px);   /* 每个区块的大标题 */
+  --fs-card-title: 22px;                    /* 作品卡片里的项目名 */
+  --fs-body:      17px;                     /* 段落正文（关于我、联系） */
+  --fs-small:     14.5px;                   /* 卡片里的项目简介 */
+  --fs-nav:       14px;                     /* 顶部导航文字 */
+  --fs-tag:       12px;                     /* 英文角标（如 01 / PROJECT） */
+
+  /* ───────────── ④ 行高：控制文字松紧 ───────────── */
+
+  --lh-hero:  1.25;   /* 大标题行高（越小越紧凑） */
+  --lh-body:  1.8;    /* 普通正文行高 */
+  --lh-about: 2.1;    /* "关于我"段落行高（故意更松，显透气） */
+
+  /* ───────────── ⑤ 留白与尺寸：版面的骨架 ───────────── */
+
+  --content-max:    1080px;  /* 内容最大宽度 —— 整页文字/卡片区多宽（数字越大越宽） */
+  --section-pad:    120px;   /* 每个大区块的上下留白（越大越空旷） */
+  --section-pad-mobile: 80px;/* 手机上区块的上下留白 */
+  --nav-height:     64px;    /* 顶部导航条高度 */
+  --card-radius:    16px;    /* 作品卡片圆角（0=方角，越大越圆润） */
+  --img-radius:     12px;    /* 影像/图片圆角 */
+  --btn-radius:     999px;   /* 按钮圆角（999=完全胶囊形，改小变圆角矩形） */
+  --card-img-h:     220px;   /* 作品卡片里图片区域的高度 */
+  --photo-row-h:    240px;   /* "影像"区每个格子的高度（越大多图越大） */
+  --grid-gap:       40px;    /* 作品卡片之间的间距 */
+  --photo-gap:      20px;    /* 影像格子之间的间距 */
+  --photo-ratio: 3 / 4;      /* 影像格子的长宽比（3/4 = 竖版；改成 4/3 变横版，1/1 变方形） */
+
+  /* ───────────── ⑥ 效果微调 ───────────── */
+
+  --nav-blur-bg:  color-mix(in srgb, var(--bg) 85%, transparent);  /* 导航半透明底色（自动跟随①的底色） */
+  --card-shadow:  color-mix(in srgb, var(--ink) 8%, transparent);  /* 卡片悬停阴影颜色（跟随主文字色淡化） */
+  --strip-speed:  75s;    /* 第一屏照片带走完一轮要多久（数字越小走得越快） */
+  --strip-gap:    0px;    /* 照片之间不留白缝 */
+  --lane-gap:     22px;   /* 两条照片带之间留多宽（米色间除） */
+  --strip-size-s: clamp(220px, 19vw, 280px);  /* 小幅变化：小 */
+  --strip-size-m: clamp(240px, 21vw, 310px);  /* 小幅变化：中 */
+  --strip-size-l: clamp(260px, 23vw, 340px);  /* 小幅变化：大 */
+}
+
+/* ═══════════════ 以下为结构代码，一般不用动 ═══════════════ */
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; overflow-x: hidden; }   /* 贴纸故意探出画框，横向溢出一律裁掉，页面永远贴满屏宽 */
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-weight: 400;
+  line-height: var(--lh-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ============ 顶部导航 ============ */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: var(--nav-blur-bg);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
+}
+
+.nav-inner {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: 0 32px;
+  height: var(--nav-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-logo {
+  font-family: var(--font-en);
+  font-size: 20px;
+  letter-spacing: 1px;
+  text-decoration: none;
+  color: var(--ink);
+  font-weight: 500;
+}
+.nav-logo .dot { color: var(--sage); }
+
+.nav-links {
+  display: flex;
+  gap: 36px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--ink-soft);
+  font-size: var(--fs-nav);
+  letter-spacing: 0.5px;
+  transition: color 0.25s;
+  position: relative;
+}
+.nav-links a:hover { color: var(--ink); }
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; left: 0;
+  width: 0; height: 1.5px;
+  background: var(--accent);
+  transition: width 0.3s;
+}
+.nav-links a:hover::after { width: 100%; }
+
+.nav-cta {
+  text-decoration: none;
+  color: var(--bg);
+  background: var(--ink);
+  padding: 8px 20px;
+  border-radius: var(--btn-radius);
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  transition: background 0.25s;
+}
+.nav-cta:hover { background: var(--accent); }
+
+/* ============ Hero（首页第一屏） ============ */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 120px 32px 60px;
+}
+
+.hero-inner {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1.25fr 0.75fr;
+  gap: 60px;
+  align-items: center;
+}
+
+/* Hero 右侧的照片：画框先浮现，照片再像从水里慢慢浮出来 */
+.hero-photo {
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+
+/* 波浪花边：贴着照片的不规则轮廓。
+   尺寸按 viewBox(800x1060) 和照片区(40,50,720,960) 反算得出，
+   所以花边内缘和照片边缘是严丝合缝的。 */
+.hero-frame {
+  position: absolute;
+  left: -5.5556%;
+  top: -5.2083%;
+  width: 111.1111%;
+  height: 110.4167%;
+  overflow: visible;
+  opacity: 0;
+  animation: emerge-frame 9.5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* 照片层：负责模糊浮现。
+   整个层裁成不规则形状，底色和花边同色——
+   这样水波扭曲把照片边缘推开时，露出来的是灰蓝而不是背景色。 */
+.hero-photo-inner {
+  opacity: 0;
+  animation: emerge-photo 9.5s ease-in-out infinite;
+  background: var(--accent-soft);
+  clip-path: polygon(3.06% 11.25%, 2.27% 10.47%, 1.74% 9.62%, 1.59% 8.74%, 1.88% 7.93%, 2.59% 7.24%, 3.63% 6.72%, 4.84% 6.37%, 6.07% 6.15%, 7.17% 5.98%, 8.07% 5.75%, 8.74% 5.40%, 9.24% 4.86%, 9.65% 4.14%, 10.11% 3.29%, 10.69% 2.42%, 11.47% 1.66%, 12.44% 1.13%, 13.53% 0.90%, 14.63% 1.02%, 15.66% 1.42%, 16.64% 2.01%, 17.61% 2.64%, 18.58% 3.21%, 19.55% 3.60%, 20.52% 3.75%, 21.50% 3.62%, 22.47% 3.23%, 23.44% 2.67%, 24.41% 2.04%, 25.38% 1.45%, 26.35% 1.02%, 27.32% 0.84%, 28.29% 0.93%, 29.27% 1.28%, 30.24% 1.82%, 31.21% 2.45%, 32.18% 3.05%, 33.15% 3.51%, 34.12% 3.74%, 35.09% 3.69%, 36.07% 3.37%, 37.04% 2.85%, 38.01% 2.23%, 38.98% 1.61%, 39.95% 1.13%, 40.92% 0.86%, 41.89% 0.87%, 42.86% 1.15%, 43.84% 1.64%, 44.81% 2.26%, 45.78% 2.88%, 46.75% 3.39%, 47.72% 3.70%, 48.69% 3.73%, 49.66% 3.49%, 50.63% 3.03%, 51.61% 2.42%, 52.58% 1.79%, 53.55% 1.25%, 54.52% 0.92%, 55.49% 0.84%, 56.46% 1.04%, 57.43% 1.48%, 58.40% 2.07%, 59.38% 2.70%, 60.35% 3.26%, 61.32% 3.63%, 62.29% 3.75%, 63.26% 3.59%, 64.23% 3.18%, 65.20% 2.61%, 66.17% 1.97%, 67.15% 1.40%, 68.12% 0.99%, 69.09% 0.83%, 70.06% 0.95%, 71.03% 1.32%, 72.00% 1.88%, 72.97% 2.52%, 73.94% 3.11%, 74.92% 3.54%, 75.89% 3.74%, 76.86% 3.67%, 77.83% 3.33%, 78.80% 2.79%, 79.77% 2.16%, 80.74% 1.56%, 81.71% 1.09%, 82.69% 0.85%, 83.66% 0.89%, 84.63% 1.19%, 85.60% 1.70%, 86.57% 2.32%, 87.54% 2.94%, 88.51% 3.43%, 89.44% 3.71%, 90.25% 3.74%, 91.05% 3.58%, 92.01% 3.29%, 93.17% 3.03%, 94.48% 2.91%, 95.78% 3.06%, 96.88% 3.52%, 97.62% 4.26%, 97.89% 5.17%, 97.68% 6.13%, 97.09% 7.02%, 96.32% 7.78%, 95.59% 8.49%, 95.13% 9.22%, 95.01% 9.95%, 95.25% 10.68%, 95.82% 11.41%, 96.60% 12.14%, 97.45% 12.86%, 98.20% 13.59%, 98.71% 14.32%, 98.89% 15.05%, 98.69% 15.78%, 98.17% 16.51%, 97.41% 17.23%, 96.56% 17.96%, 95.79% 18.69%, 95.23% 19.42%, 95.00% 20.15%, 95.14% 20.88%, 95.62% 21.61%, 96.36% 22.33%, 97.20% 23.06%, 98.00% 23.79%, 98.59% 24.52%, 98.87% 25.25%, 98.79% 25.98%, 98.36% 26.70%, 97.65% 27.43%, 96.82% 28.16%, 96.00% 28.89%, 95.37% 29.62%, 95.03% 30.35%, 95.06% 31.08%, 95.45% 31.80%, 96.12% 32.53%, 96.94% 33.26%, 97.77% 33.99%, 98.44% 34.72%, 98.83% 35.45%, 98.86% 36.17%, 98.52% 36.90%, 97.89% 37.63%, 97.07% 38.36%, 96.23% 39.09%, 95.53% 39.82%, 95.10% 40.54%, 95.01% 41.27%, 95.30% 42.00%, 95.89% 42.73%, 96.69% 43.46%, 97.53% 44.19%, 98.27% 44.92%, 98.75% 45.64%, 98.89% 46.37%, 98.66% 47.10%, 98.10% 47.83%, 97.33% 48.56%, 96.48% 49.29%, 95.72% 50.01%, 95.19% 50.74%, 95.00% 51.47%, 95.18% 52.20%, 95.69% 52.93%, 96.44% 53.66%, 97.28% 54.39%, 98.07% 55.11%, 98.64% 55.84%, 98.88% 56.57%, 98.76% 57.30%, 98.30% 58.03%, 97.57% 58.76%, 96.73% 59.48%, 95.93% 60.21%, 95.32% 60.94%, 95.02% 61.67%, 95.08% 62.40%, 95.50% 63.13%, 96.20% 63.85%, 97.03% 64.58%, 97.85% 65.31%, 98.49% 66.04%, 98.85% 66.77%, 98.84% 67.50%, 98.47% 68.23%, 97.81% 68.95%, 96.99% 69.68%, 96.16% 70.41%, 95.47% 71.14%, 95.07% 71.87%, 95.03% 72.60%, 95.34% 73.32%, 95.97% 74.05%, 96.77% 74.78%, 97.61% 75.51%, 98.33% 76.24%, 98.78% 76.97%, 98.88% 77.70%, 98.61% 78.42%, 98.03% 79.15%, 97.24% 79.88%, 96.40% 80.61%, 95.65% 81.34%, 95.16% 82.07%, 95.00% 82.79%, 95.21% 83.52%, 95.75% 84.25%, 96.52% 84.98%, 97.37% 85.71%, 98.14% 86.44%, 98.68% 87.16%, 98.89% 87.92%, 98.68% 88.73%, 98.07% 89.49%, 97.15% 90.15%, 96.08% 90.70%, 95.04% 91.16%, 94.16% 91.59%, 93.55% 92.05%, 93.19% 92.61%, 93.05% 93.33%, 93.01% 94.19%, 92.94% 95.14%, 92.71% 96.09%, 92.23% 96.95%, 91.47% 97.60%, 90.46% 97.96%, 89.30% 98.02%, 88.08% 97.80%, 86.90% 97.40%, 85.82% 96.94%, 84.86% 96.53%, 83.98% 96.28%, 83.05% 96.28%, 82.08% 96.55%, 81.11% 97.03%, 80.14% 97.64%, 79.17% 98.27%, 78.20% 98.79%, 77.23% 99.10%, 76.25% 99.15%, 75.28% 98.93%, 74.31% 98.47%, 73.34% 97.87%, 72.37% 97.24%, 71.40% 96.69%, 70.43% 96.34%, 69.46% 96.25%, 68.48% 96.44%, 67.51% 96.87%, 66.54% 97.45%, 65.57% 98.09%, 64.60% 98.65%, 63.63% 99.03%, 62.66% 99.17%, 61.69% 99.02%, 60.71% 98.63%, 59.74% 98.06%, 58.77% 97.42%, 57.80% 96.84%, 56.83% 96.42%, 55.86% 96.25%, 54.89% 96.36%, 53.92% 96.72%, 52.94% 97.27%, 51.97% 97.90%, 51.00% 98.50%, 50.03% 98.94%, 49.06% 99.16%, 48.09% 99.09%, 47.12% 98.77%, 46.15% 98.24%, 45.17% 97.61%, 44.20% 97.00%, 43.23% 96.53%, 42.26% 96.28%, 41.29% 96.30%, 40.32% 96.59%, 39.35% 97.09%, 38.38% 97.71%, 37.40% 98.33%, 36.43% 98.83%, 35.46% 99.12%, 34.49% 99.14%, 33.52% 98.89%, 32.55% 98.41%, 31.58% 97.80%, 30.61% 97.18%, 29.63% 96.65%, 28.66% 96.32%, 27.69% 96.26%, 26.72% 96.47%, 25.75% 96.92%, 24.78% 97.52%, 23.81% 98.15%, 22.84% 98.70%, 21.86% 99.06%, 20.89% 99.16%, 19.92% 98.99%, 18.95% 98.58%, 17.98% 97.99%, 17.01% 97.36%, 16.04% 96.79%, 15.07% 96.40%, 14.09% 96.25%, 13.13% 96.38%, 12.20% 96.76%, 11.24% 97.28%, 10.15% 97.79%, 8.94% 98.14%, 7.68% 98.23%, 6.53% 97.98%, 5.63% 97.42%, 5.06% 96.60%, 4.83% 95.65%, 4.88% 94.68%, 5.09% 93.78%, 5.28% 93.02%, 5.29% 92.39%, 5.04% 91.84%, 4.52% 91.29%, 3.80% 90.64%, 2.97% 89.92%, 2.15% 89.19%, 1.51% 88.46%, 1.15% 87.74%, 1.16% 87.01%, 1.53% 86.28%, 2.19% 85.55%, 3.01% 84.82%, 3.84% 84.09%, 4.53% 83.37%, 4.93% 82.64%, 4.97% 81.91%, 4.66% 81.18%, 4.03% 80.45%, 3.23% 79.72%, 2.39% 78.99%, 1.67% 78.27%, 1.22% 77.54%, 1.12% 76.81%, 1.39% 76.08%, 1.97% 75.35%, 2.76% 74.62%, 3.60% 73.90%, 4.35% 73.17%, 4.84% 72.44%, 5.00% 71.71%, 4.79% 70.98%, 4.25% 70.25%, 3.48% 69.53%, 2.63% 68.80%, 1.86% 68.07%, 1.32% 67.34%, 1.11% 66.61%, 1.27% 65.88%, 1.77% 65.15%, 2.51% 64.43%, 3.35% 63.70%, 4.14% 62.97%, 4.73% 62.24%, 4.99% 61.51%, 4.89% 60.78%, 4.44% 60.06%, 3.72% 59.33%, 2.88% 58.60%, 2.08% 57.87%, 1.46% 57.14%, 1.14% 56.41%, 1.18% 55.68%, 1.59% 54.96%, 2.27% 54.23%, 3.10% 53.50%, 3.92% 52.77%, 4.58% 52.04%, 4.95% 51.31%, 4.96% 50.59%, 4.61% 49.86%, 3.96% 49.13%, 3.14% 48.40%, 2.31% 47.67%, 1.61% 46.94%, 1.20% 46.22%, 1.13% 45.49%, 1.43% 44.76%, 2.04% 44.03%, 2.84% 43.30%, 3.69% 42.57%, 4.41% 41.84%, 4.87% 41.12%, 4.99% 40.39%, 4.75% 39.66%, 4.18% 38.93%, 3.40% 38.20%, 2.55% 37.47%, 1.80% 36.75%, 1.29% 36.02%, 1.11% 35.29%, 1.31% 34.56%, 1.83% 33.83%, 2.59% 33.10%, 3.44% 32.37%, 4.21% 31.65%, 4.77% 30.92%, 5.00% 30.19%, 4.86% 29.46%, 4.38% 28.73%, 3.64% 28.00%, 2.80% 27.28%, 2.00% 26.55%, 1.41% 25.82%, 1.13% 25.09%, 1.21% 24.36%, 1.64% 23.63%, 2.35% 22.91%, 3.18% 22.18%, 4.00% 21.45%, 4.63% 20.72%, 4.97% 19.99%, 4.94% 19.26%, 4.55% 18.53%, 3.88% 17.81%, 3.05% 17.08%, 2.23% 16.35%, 1.56% 15.62%, 1.17% 14.89%, 1.15% 14.16%, 1.48% 13.44%, 2.11% 12.71%, 2.93% 11.98%);
+}
+
+/* 照片本身：负责水波扭曲 */
+.hero-photo-inner img {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: url(#water-ripple);
+}
+
+@keyframes emerge-frame {
+  0%        { opacity: 0; }
+  22%, 60%  { opacity: 1; }
+  84%       { opacity: 0; }
+  100%      { opacity: 0; }
+}
+
+@keyframes emerge-photo {
+  0%        { opacity: 0; filter: blur(14px); transform: translateY(16px) scale(.98); }
+  22%, 60%  { opacity: 1; filter: blur(0);    transform: translateY(0)    scale(1); }
+  84%       { opacity: 0; filter: blur(12px); transform: translateY(-12px) scale(.99); }
+  100%      { opacity: 0; filter: blur(14px); transform: translateY(16px) scale(.98); }
+}
+
+.hero-kicker, .section-kicker {
+  display: inline-block;
+  font-family: var(--font-en);
+  font-size: 11px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--kicker-ink);
+  background: var(--kicker-bg);
+  padding: 6px 14px;
+  border-radius: 6px;
+  margin-bottom: 22px;
+}
+
+.hero-title {
+  font-family: var(--font-title);
+  font-weight: 400;
+  font-size: var(--fs-hero);
+  line-height: var(--lh-hero);
+  letter-spacing: 0.08em;   /* 标题字间距：数字越大，字和字越开 */
+  margin-bottom: 28px;
+}
+.hero-title .accent {
+  color: var(--accent);
+  font-weight: 400;
+}
+
+/* "月"字：字体、颜色跟前面两个字一样，只是会像坏掉的灯一样偶尔闪一下 */
+.hero-title .flicker {
+  color: var(--accent);
+  animation: flicker 4.6s infinite;
+}
+
+@keyframes flicker {
+  0%, 6%    { opacity: 1;   text-shadow: 0 0 30px rgba(230, 224, 203, .95); }
+  7%        { opacity: .18; text-shadow: none; }
+  8%        { opacity: 1;   text-shadow: 0 0 30px rgba(230, 224, 203, .95); }
+  9%        { opacity: .45; text-shadow: none; }
+  10%, 33%  { opacity: 1;   text-shadow: 0 0 30px rgba(230, 224, 203, .95); }
+  34%       { opacity: .12; text-shadow: none; }
+  35%       { opacity: 1;   text-shadow: 0 0 30px rgba(230, 224, 203, .95); }
+  36%       { opacity: .38; text-shadow: none; }
+  37%, 66%  { opacity: 1;   text-shadow: 0 0 30px rgba(230, 224, 203, .95); }
+  67%       { opacity: .20; text-shadow: none; }
+  68%       { opacity: 1;   text-shadow: 0 0 30px rgba(230, 224, 203, .95); }
+  69%       { opacity: .55; text-shadow: none; }
+  70%, 100% { opacity: 1;   text-shadow: 0 0 30px rgba(230, 224, 203, .95); }
+}
+
+.hero-desc {
+  font-size: clamp(16px, 2vw, 20px);
+  color: var(--ink-soft);
+  line-height: 2;
+  margin-bottom: 32px;
+}
+
+.hero-tagline {
+  font-family: var(--font-serif);
+  font-size: 15px;
+  color: var(--accent);
+  letter-spacing: 1px;
+  border-left: 2px solid var(--sage);
+  padding-left: 16px;
+}
+
+/* ============ 小狗浮雕水印 ============
+   不抠图：multiply 混合让白底在米白页面上自动隐形，
+   狗身只剩一点点深色阴影，像纸面上压出的浮雕。 */
+.puppy-mark {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  height: min(58vh, 560px);
+  transform: translate(-50%, -50%);
+  z-index: -1;                /* 垫到所有 section 背景和内容下面 */
+  pointer-events: none;
+  opacity: .3;
+  filter: grayscale(1) contrast(1.35);
+  mix-blend-mode: multiply;
+  user-select: none;
+}
+
+/* ============ 通用 section ============ */
+section {
+  padding: var(--section-pad) 32px;
+}
+
+.section-head {
+  max-width: var(--content-max);
+  margin: 0 auto 64px;
+}
+
+.section-title {
+  font-family: var(--font-title);
+  font-weight: 400;
+  font-size: var(--fs-section);
+  letter-spacing: 2px;
+}
+
+/* ============ 作品卡片 ============ */
+.works { /* 底色与 body 相同，去掉后小狗水印能在卡片间隙透出来 */ }
+
+.work-grid {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--grid-gap);
+}
+
+.work-card {
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: var(--card-radius);
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.work-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px var(--card-shadow);
+}
+
+.work-card-img {
+  height: var(--card-img-h);
+  overflow: hidden;
+  background: var(--bg-soft);   /* 图还没加载出来时兜底的底色 */
+}
+.work-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;            /* 图自动裁齐、不变形 */
+  display: block;
+  transition: transform 0.6s;
+}
+.work-card:hover .work-card-img img { transform: scale(1.04); }
+
+.work-card-body {
+  padding: 28px;
+}
+
+.work-card-body h3 {
+  font-family: var(--font-title);
+  font-weight: 400;
+  font-size: var(--fs-card-title);
+  margin-bottom: 6px;
+}
+
+.work-tag {
+  display: inline-block;
+  font-size: 11px;
+  letter-spacing: 0.5px;
+  color: var(--ink);
+  background: var(--accent-soft);
+  padding: 4px 11px;
+  border-radius: 5px;
+  margin-bottom: 12px;
+}
+
+.work-card-body p:last-child {
+  color: var(--ink-soft);
+  font-size: var(--fs-small);
+}
+
+/* ============ 影像 ============ */
+.photos { background: var(--bg-soft); }
+
+/* ============ 第一屏：两条无缝照片带（上下反向流动） ============
+   照片之间和两条带子之间都不留白缝；每条 8 张后无缝接回副本。
+   想改速度和照片大小 → 改 :root 里的 strip 变量。 */
+.photos-hero {
+  height: 100vh;
+  min-height: 560px;
+  padding: var(--nav-height) 0 0;
+  background: var(--bg-soft);
+  /* 两行照片边缘的柔光：亮核约 0.6cm，整体泛光约 2cm，奶白色 */
+  box-shadow:
+    0 0 22px 3px  rgba(255, 255, 255, .9),
+    0 0 64px 14px rgba(255, 251, 240, .5);
+}
+  overflow: hidden;
+  position: relative;
+}
+.photo-wall {
+  height: 100%;
+  padding: 0;
+  display: grid;
+  grid-template-rows: 1.12fr 0.88fr;   /* 下排压低一点 */
+  row-gap: var(--lane-gap);            /* 两行之间留一条米色间除 */
+  column-gap: 0;
+  overflow: hidden;
+  transform: translate3d(0, var(--wall-y, 0px), 0);
+  opacity: var(--wall-fade, 1);
+}
+.photo-lane {
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+}
+.photo-track {
+  display: flex;
+  flex: none;
+  height: 100%;
+  width: max-content;
+  will-change: transform;
+}
+.photo-track.is-ready {
+  animation: strip-left var(--strip-speed) linear infinite;
+}
+.photo-track--left.is-ready {
+  padding: 14px 0;          /* 上排也留一点上下余量，悬停放大时不被裁 */
+}
+.photo-track--right.is-ready {
+  animation-name: strip-right;
+  animation-delay: -31.5s;  /* 两行错开起跑 */
+  padding: 18px 0;          /* 给波浪上下浮动留出余量，不裁切 */
+}
+/* 下排：照片跟着波浪轴起伏，每张的相位由 JS 错开 */
+.photo-track--right.is-ready .photo-item {
+  animation: strip-bob 3.6s ease-in-out infinite;
+}
+@keyframes strip-bob {
+  0%, 100% { transform: translateY(-13px); }
+  50%      { transform: translateY(13px); }
+}
+/* 猫猫贴纸：贴在影像区左右两侧、下半部位置，镜面对称 + 抑制不住的抖动 */
+.hero-mascot {
+  position: absolute;
+  z-index: 5;
+  pointer-events: none;
+  filter: drop-shadow(0 6px 14px rgba(38, 73, 111, .18));
+}
+.hero-mascot--left {
+  left: -20.2%;            /* 一部分探出画框外 */
+  top: 3%;               /* 上半区，比右边那只高 */
+  bottom: auto;
+  width: clamp(88px, 9vw, 132px);
+}
+.hero-mascot--right {
+  right: -10.2%;
+  top: 72%;               /* 错落：明显比左边那只低一截 */
+  bottom: auto;
+  width: clamp(58px, 6vw, 90px);
+  transform: scaleX(-1);   /* 镜面：对面那只 */
+}
+@media (prefers-reduced-motion: no-preference) {
+  .hero-mascot--left  { animation: mascot-jitter 1.6s ease-in-out infinite; }
+  .hero-mascot--right { animation: mascot-jitter 1.25s ease-in-out infinite .4s; }
+}
+@keyframes mascot-jitter {
+  0%, 100% { rotate: -3deg;   translate: 0 0; }
+  25%      { rotate: 2.5deg;  translate: 0 -2px; }
+  50%      { rotate: -1.5deg; translate: 1px 1px; }
+  75%      { rotate: 3deg;    translate: -1px -1px; }
+}
+/* 星星雨：满页固定层，不挡鼠标 */
+.star-rain {
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  overflow: hidden;
+}
+.star-drop {
+  position: absolute;
+  top: -20px;
+  animation: star-fall linear infinite;
+}
+@keyframes star-fall {
+  0%   { transform: translateY(-24px) rotate(0deg); }
+  100% { transform: translateY(106vh) rotate(220deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .star-rain { display: none; }
+}
+
+/* 大白：沿着两行照片的交界线来回走，脚是像素风补的 */
+.walker {
+  position: absolute;
+  top: calc((100% - var(--lane-gap)) * 0.56 + var(--lane-gap) / 2);   /* 交界线中心 = 上排底 + 间距一半 */
+  transform: translateY(-50%);
+  left: 30%;                                    /* JS 会接管 */
+  width: 46px;
+  z-index: 6;
+  pointer-events: none;
+}
+.walker-flip { position: relative; }
+.walker-body { position: relative; }
+.walker-body img { display: block; width: 100%; }
+.walker-foot {
+  position: absolute;
+  bottom: -4px;
+  width: 11px; height: 6px;
+  border-radius: 2px;
+  background: #2b2b2b;
+}
+.walker-foot--l { left: 10px; }
+.walker-foot--r { right: 10px; }
+@media (prefers-reduced-motion: no-preference) {
+  .walker-body { animation: walker-waddle .36s ease-in-out infinite alternate; }
+  .walker-foot--l { animation: foot-step .36s ease-in-out infinite alternate; }
+  .walker-foot--r { animation: foot-step .36s ease-in-out infinite alternate .18s; }
+}
+@keyframes walker-waddle {
+  from { rotate: -5deg; }
+  to   { rotate: 5deg; }
+}
+@keyframes foot-step {
+  from { translate: -3px -4px; }
+  to   { translate: 3px 0; }
+}
+
+/* 电话玩具：听筒拖拽拉长电话线，松手弹回 */
+.phone-toy {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  pointer-events: none;
+}
+.phone-cord {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.phone-cord path {
+  fill: none;
+  stroke: #d2336d;
+  stroke-width: 4.5;
+  stroke-linecap: round;
+}
+.phone-cord .cord-gray { stroke: #6f6f6f; }
+.phone-body {
+  position: absolute;
+  width: 34px;   /* 竖版听筒，高按原图比例约 240-270px */
+  pointer-events: auto;
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  filter: drop-shadow(0 6px 12px rgba(38, 73, 111, .2));
+}
+.phone-body.is-grabbed {
+  cursor: grabbing;
+  filter: drop-shadow(0 14px 22px rgba(38, 73, 111, .3));
+}
+
+/* 鼠标停上去：整条带子停下，照片像抽卡一样浮起来 */
+.photo-lane:hover .photo-track.is-ready { animation-play-state: paused; }
+.photo-lane:hover .photo-item { animation-play-state: paused; }
+.photo-wall .photo-item {
+  position: relative;
+  transition: scale .35s ease, box-shadow .35s ease;
+}
+.photo-wall .photo-item:hover {
+  scale: 1.06;
+  z-index: 10;
+  box-shadow: 0 16px 38px rgba(38, 73, 111, .3);
+}
+.photo-set {
+  display: flex;
+  flex: none;
+  height: 100%;
+  gap: var(--strip-gap);
+}
+.photo-wall .photo-item {
+  height: 100%;
+  flex: 0 0 auto;
+  margin: 0;
+  border-radius: 0;
+  aspect-ratio: auto;
+  overflow: hidden;
+}
+.photo-size-s { width: var(--strip-size-s); }
+.photo-size-m { width: var(--strip-size-m); }
+.photo-size-l { width: var(--strip-size-l); }
+.photo-wall .photo-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.photo-wall .photo-item:hover img { transform: none; }
+@keyframes strip-left {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(-50%, 0, 0); }
+}
+@keyframes strip-right {
+  from { transform: translate3d(-50%, 0, 0); }
+  to   { transform: translate3d(0, 0, 0); }
+}
+
+/* 名字那块：等滚下来才浮现（没开 JS、或用系统“减少动态效果”时不会藏） */
+.js-reveal .hero-text,
+.js-reveal .hero-photo {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1.1s ease, transform 1.1s cubic-bezier(.22, .61, .36, 1);
+}
+.js-reveal .hero-photo { transition-delay: .18s; }
+.js-reveal .hero-inner.in-view .hero-text,
+.js-reveal .hero-inner.in-view .hero-photo {
+  opacity: 1;
+  transform: none;
+}
+
+.photo-grid {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);   /* 一行几张照片（4 列；想大张点就改成 3） */
+  gap: var(--photo-gap);
+}
+
+.photo-item {
+  aspect-ratio: var(--photo-ratio);        /* 全部竖版；照片本来是什么比例都自动裁齐 */
+  border-radius: var(--img-radius);
+  overflow: hidden;
+  position: relative;
+}
+.photo-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s;
+}
+.photo-item:hover img { transform: scale(1.04); }
+
+/* 想让某一张横跨两格，给它加 class="photo-wide" 就行
+.photo-wide { grid-column: span 2; }
+*/
+
+.photo-item figcaption {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 40px 16px 12px;
+  background: linear-gradient(transparent, rgba(0,0,0,0.45));
+  color: var(--bg);
+  font-size: 13px;
+  letter-spacing: 1px;
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+.photo-item:hover figcaption { opacity: 1; }
+
+.photo-placeholder {
+  width: 100%; height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: color-mix(in srgb, var(--bg-soft) 62%, var(--line) 38%);
+  color: color-mix(in srgb, var(--ink-soft) 62%, var(--bg) 38%);
+  font-size: 13px;
+  letter-spacing: 2px;
+  border: 1px dashed color-mix(in srgb, var(--line) 78%, var(--ink-soft) 22%);
+  border-radius: var(--img-radius);
+  text-align: center;
+  padding: 16px;
+}
+.photo-placeholder::before {
+  content: '＋';
+  font-size: 22px;
+  color: color-mix(in srgb, var(--ink-soft) 70%, var(--bg) 30%);
+}
+
+/* ============ 关于 ============ */
+.about-body, .contact-body {
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.about-body p {
+  font-size: var(--fs-body);
+  color: var(--ink-soft);
+  margin-bottom: 20px;
+  line-height: var(--lh-about);
+}
+
+.about-note {
+  font-family: var(--font-serif);
+  color: var(--accent) !important;
+  font-size: 15px !important;
+  border-left: 2px solid var(--sage);
+  padding-left: 16px;
+}
+
+/* ============ 联系 ============ */
+.contact {
+  background: var(--ink);
+  color: var(--bg);
+}
+.contact .section-kicker { color: var(--kicker-ink); }
+.contact .section-title { color: var(--bg); }
+
+.contact-body p {
+  font-size: var(--fs-body);
+  color: var(--on-dark);
+  margin-bottom: 36px;
+  line-height: 2;
+}
+
+.contact-links { display: flex; gap: 16px; flex-wrap: wrap; }
+
+.btn {
+  display: inline-block;
+  padding: 12px 32px;
+  border-radius: var(--btn-radius);
+  font-size: 14px;
+  text-decoration: none;
+  letter-spacing: 1px;
+  transition: all 0.25s;
+}
+.btn-primary {
+  background: var(--bg);
+  color: var(--ink);
+}
+.btn-primary:hover { background: var(--accent-soft); color: var(--ink); }
+.btn-ghost {
+  border: 1px solid var(--accent-soft);
+  color: var(--on-dark);
+}
+.btn-ghost:hover { border-color: var(--bg); color: var(--bg); }
+
+/* ============ Footer ============ */
+.footer {
+  background: var(--ink);
+  color: color-mix(in srgb, var(--on-dark) 58%, transparent);
+  text-align: center;
+  padding: 40px 16px 48px;
+  font-size: 13px;
+  border-top: 1px solid var(--on-dark-line);
+}
+
+/* ============ 响应式（手机窄屏） ============ */
+@media (max-width: 768px) {
+  section { padding: var(--section-pad-mobile) 20px; }
+  .hero { padding-top: 110px; min-height: auto; padding-bottom: 80px; }
+  .hero-inner { grid-template-columns: 1fr; gap: 36px; }
+  .hero-photo { max-width: 330px; margin: 0 auto; }
+
+  /* 手机上不隐藏导航：缩小放进一行，放不下就横向滑动 */
+  .nav-inner { padding: 0 16px; gap: 10px; }
+  .nav-links {
+    display: flex;
+    gap: 14px;
+    min-width: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .nav-links::-webkit-scrollbar { display: none; }
+  .nav-links a { font-size: 12.5px; white-space: nowrap; }
+  .nav-links a::after { display: none; }
+  .nav-cta { padding: 7px 15px; font-size: 12px; flex: none; }
+
+  /* 手机上格栅两列 */
+  .photo-grid { grid-template-columns: 1fr 1fr; }
+  /* 手机没有 hover，图片说明直接显示 */
+  .photo-item figcaption { opacity: 1; }
+
+  /* 手机上也保留满屏双轨道；照片稍窄一些，但仍不留白缝 */
+  :root {
+    --strip-size-s: clamp(180px, 50vw, 210px);
+    --strip-size-m: clamp(190px, 55vw, 230px);
+    --strip-size-l: clamp(200px, 60vw, 250px);
+  }
+  .photos-hero { height: 100vh; min-height: 560px; }
+  .photo-wall { padding: 0; }
+}
